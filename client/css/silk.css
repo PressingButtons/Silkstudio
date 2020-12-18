@@ -1,0 +1,185 @@
+body, html { width: 100%; height: 100%; }
+
+body, .flexed, .pane {
+  display: flex;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  background: #676767;
+  color: #EEE;
+  flex-flow: column nowrap;
+  user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, h6 { padding: 6px; }
+
+canvas {
+  background: #888;
+  background-image: linear-gradient(45deg, #A0A0A0 25%, transparent 25%), linear-gradient(-45deg, #A0A0A0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #A0A0A0 75%), linear-gradient(-45deg, transparent 75%, #A0A0A0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.logo {
+  position: relative;
+  border-bottom: 1px solid #111;
+}
+
+.logo > h1 {
+  cursor: pointer;
+}
+
+.logo > h1:hover {
+  text-decoration: underline;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown.menu {
+  background: #333;
+  border: 1px solid #111;
+  color: #EEE;
+  cursor: pointer;
+  display: none;
+}
+
+.dropdown.menu.active {
+  display: block;
+}
+
+.dropdown.menu > p:hover {
+  background: #555;
+}
+
+.dropdown.menu > p:not(:last-child) {
+  border-bottom: 1px solid #111;
+}
+
+#tabs {
+  display: flex;
+  background: #333;
+  border-bottom: 1px solid #111;
+}
+
+.tab {
+  background: #444; width: 120px;
+  display: flex; justify-content: space-between;
+  cursor: pointer;
+}
+
+.tab:hover > p:first-child {
+  text-decoration: underline;
+}
+
+#tabs p:first-child {
+  overflow: ellipses;
+}
+
+.tab.active {
+  background: #676767;
+}
+
+#main {
+  flex:1;
+  background: #444444;
+  position: relative;
+}
+
+.form {
+  position: absolute;
+  top:0; bottom:0; left:0; right:0;
+  z-index: 1;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form form {
+  min-width: 600px;
+  background: #222;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.25);
+  border-radius: 5px;
+  align-items: center;
+
+}
+
+.content {
+  padding: 8px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+form > .content {
+  flex:1;
+}
+
+.line {
+  display: flex;
+}
+
+.line.spaced {
+  justify-content: space-between;
+}
+
+.editor {
+  position: relative;
+  background: #676767;
+  width: 100%; height: 100%;
+}
+
+.canvas_area canvas {
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+#character_ui.editor {
+  display: flex;
+}
+
+#characterUI .canvas_area canvas {
+  min-width: 800px;
+}
+
+#character_ui .editor_area {
+  flex:1; display: flex; flex-flow: column nowrap;
+}
+
+#character_ui .canvas_area {
+  background: #333;
+  position: relative;
+  flex:1;
+}
+
+#character_ui .canvas_area > .cells {
+  position: absolute; right: 0; top:0; bottom: 0;
+  border-left: 1px solid #111;
+  overflow-y: auto;
+  min-width: 200px;
+  display: flex; flex-flow: column nowrap;
+  background: #676767;
+
+}
+
+.cells h1 {
+  text-align: center;
+  border-bottom: 1px solid #111;
+}
+
+#character_ui .interface_area {
+  border-left: 1px solid #111;
+  width: 450px;
+}
+
+#character_ui .rail {
+  height: 80px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  border-top: 1px solid #111;
+}

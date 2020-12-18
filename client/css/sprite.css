@@ -1,0 +1,40 @@
+button {
+  align-self: flex-start;
+}
+
+.inteface {
+  height: 320px;
+  display: flex;
+}
+
+.form {
+  position: absolute;
+  z-index: 10;
+  top:50%; left:50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+}
+
+.form h1 {
+  background: rgba(0,0,0,0.2);
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#preview {
+  overflow: auto;
+}
+
+.frame_list {
+  background: rgba(0,0,0,0.4);
+  overflow-y: auto;
+  width: 180px;
+}
+
+.frame_list li {
+  cursor: pointer;
+}
