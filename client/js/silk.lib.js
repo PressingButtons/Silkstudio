@@ -35,28 +35,28 @@ const Silk = (function( ) {
   }
 
   const Animation = function( name ) {
-    let this.name = name;
+    this.name = name;
     this.frames = [ ];
   }
 
-  Animaton.prototype.addFrame = function( ) {
+  Animation.prototype.addFrame = function( ) {
     this.frames.push(new AnimationFrame( ));
   }
 
-  Animaton.prototype.setBody = function( x, y, width, height ) {
+  Animation.prototype.setBody = function( x, y, width, height ) {
 
   }
 
   const AnimationFrame = function( ) {
     this.index = this.body = this.script = null;
-    this.time = 0; this.hurtboxes = []; this.hitboxes = []''
+    this.time = 0; this.hurtboxes = []; this.hitboxes = [];
   }
 
   AnimationFrame.prototype.setBody = function( x, y, width, height ) {
     this.body = { x: x, y: y, width:width, height: height }
   }
 
-  AnimationFrame.prototype.
+  //AnimationFrame.prototype.
 
   const SilkBox = function( type, width, height, properties ) {
     this.type = type;
@@ -66,8 +66,8 @@ const Silk = (function( ) {
 
   return {
     Project : {
-      Character:  CharacterProject,
-      TileMap: TileMapProject,
+      CharacterProject: CharacterProject,
+      TileMapProject: TileMapProject,
     }
   }
 

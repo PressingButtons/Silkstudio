@@ -12,7 +12,7 @@ body {
   user-select: none;
 }
 
-p, h1, h2, h3, h4, h5, h6 { padding: 6px; }
+p, h1, h2, h3, h4, h5, h6, button { padding: 6px; }
 
 canvas {
   background: #888;
@@ -182,4 +182,33 @@ form > .content {
   justify-content: center;
   flex-flow: column nowrap;
   border-top: 1px solid #111;
+}
+
+#character_ui .interface_area > .panel {
+  border-bottom: 1px solid #111;
+}
+
+#character_ui .interface_area > .panel > h1 {
+  background: #454545;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+#character_ui .interface_area > .panel > h1:hover {
+  background: #505050;
+}
+
+#cellwidth, #cellheight, #imagename {
+  min-width: 100px;
+  border-bottom: 1px solid #EEE;
+}
+
+#imagename {
+  flex:1;
+}
+
+.interface_area .content {
+  display: block;
+  padding: 0;
 }

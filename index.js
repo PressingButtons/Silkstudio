@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 app.use('/src', express.static(path.join(__dirname, '/client')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.js')));
+//app.use('/silk', express.static(path.join(__dirname, 'server', 'silk.lib.js')));
 
 //routing
 const getPage = name => {
