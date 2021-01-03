@@ -111,6 +111,7 @@ $(document).ready( event =>{
     $('.dropdown.active').removeClass('active');
     $('#main_menu').is(event.target) ? $('.logo > .dropdown').toggleClass('active') : null;
     $('.dropdown').has(event.target) ? $($(event.target).parent()).addClass('active') : null;
+    $('.folder').has(event.target) ? ui.toggleFolder( event );
     $('#nc').is( event.target) ? app.ui.prompt.characterProjectForm( ) : null;
     event.stopPropagation();
   })

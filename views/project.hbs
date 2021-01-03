@@ -1,0 +1,53 @@
+<div class="taskbar">
+
+  <div class="dropdown">
+    <h1>File</h1>
+    <div class="content">
+      <div class="line" onclick="IDE.onTaskBarOption('Scene')">
+        <p>New Scene</p>
+        <p>Alt+Shift+N</p>
+      </div>
+      <div class="line" onclick="IDE.onTaskBarOption('GameObject')">
+        <p>New Object</p>
+        <p>Alt+Shift+O</p>
+      </div>
+      <div class="line" onclick="IDE.onTaskBarOption('Asset')">
+        <p>New Assets</p>
+        <p>Alt+Shift+N</p>
+      </div>
+      <div class="line" onclick="IDE.onTaskBarOption('Script')">
+        <p>New Script</p>
+        <p>Alt+Shift+N</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="project">
+
+  <div class="navigation">
+
+    <h1>Project - {{name}}</h1>
+
+    <div class="folders">
+      {{#each folders}}
+      <div class="folder">
+        <div class="header">
+          <h2 class='folderstate'>&#x25B6;</h2>
+          <h2>&#x1F5BF;</h2>
+          <h2>{{folder}}</h2>
+        </div>
+        <div class="content"></div>
+      </div>
+      {{/each}}
+
+    </div>
+
+  </div>
+
+  <div class="workspace" id='workspace'>
+    {{{body}}}
+  </div>
+
+</div>

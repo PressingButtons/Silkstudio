@@ -1,18 +1,36 @@
+:root{
+  --soot: #252525;
+  --ash: #555;
+  --smoke: #777;
+  --main-bg: #DEDEDE;
+  --hilite: #EAEAEA;
+  --shaded-bg: #D0D0D0;
+}
+
 body, html { width: 100%; height: 100%; }
 
 body, .flexed, .pane {
   display: flex;
+  flex-flow:  column nowrap;
+  position: relative;
 }
 
 body {
   font-family: 'Karla', sans-serif;
-  background: #676767;
-  color: #EEE;
+  background: var(--main-bg);
+  color: var(--ash);
   flex-flow: column nowrap;
   user-select: none;
 }
 
-p, h1, h2, h3, h4, h5, h6, button { padding: 6px; }
+p, h1, h2, h3, h4, h5, h6, button, input { padding: 6px; }
+
+input, button {
+  color: inherit;
+  background: none; border: none;
+  margin: 6px;
+}
+
 
 canvas {
   background: #888;
@@ -21,194 +39,134 @@ canvas {
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
-.logo {
-  position: relative;
-  border-bottom: 1px solid #111;
-}
-
-.logo > h1 {
-  cursor: pointer;
-}
-
-.logo > h1:hover {
-  text-decoration: underline;
-}
-
-.dropdown {
-  position: absolute;
-  z-index: 1;
-}
-
-.dropdown.menu {
-  background: #333;
-  border: 1px solid #111;
-  color: #EEE;
-  cursor: pointer;
-  display: none;
-}
-
-.dropdown.menu.active {
-  display: block;
-}
-
-.dropdown.menu > p:hover {
-  background: #555;
-}
-
-.dropdown.menu > p:not(:last-child) {
-  border-bottom: 1px solid #111;
-}
-
-#tabs {
-  display: flex;
-  background: #333;
-  border-bottom: 1px solid #111;
-}
-
-.tab {
-  background: #444; width: 120px;
-  display: flex; justify-content: space-between;
-  cursor: pointer;
-}
-
-.tab:hover > p:first-child {
-  text-decoration: underline;
-}
-
-#tabs p:first-child {
-  overflow: ellipses;
-}
-
-.tab.active {
-  background: #676767;
-}
-
-#main {
-  flex:1;
-  background: #444444;
-  position: relative;
-}
-
-.form {
-  position: absolute;
-  top:0; bottom:0; left:0; right:0;
-  z-index: 1;
-  background: rgba(0,0,0,0.25);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form form {
-  min-width: 600px;
-  background: #222;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.25);
-  border-radius: 5px;
-  align-items: center;
-
-}
-
-.content {
-  padding: 8px;
-  display: flex;
+div.app {
   flex-flow: column nowrap;
 }
 
-form > .content {
-  flex:1;
+div.folders {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: ellipse;
 }
 
-.line {
+div.folders .content{
+  flex-flow:  column nowrap;
+}
+
+div.folders.open .content {
   display: flex;
 }
 
-.line.spaced {
+div.folder .header:hover {
+  background: var(--smoke);
+}
+
+div.overpane {
+  display: none;
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  z-index: 10;
+  background: rgba(0,0,0,0.25);
+}
+
+div.overpane.show {
+  display: flex;
+}
+
+div.project {
+  background: var(--ash);
+  border-top: 1px solid var(--soot);
+  position: relative;
+  color: rgba(255,255,255,0.85 );
+}
+
+div.project .navigation {
+  width: 300px;
+  flex-flow: column nowrap;
+  border-right: 1px solid var(--soot);
+}
+
+div.project .workspace {
+  position: relative;
+  display: flex; flex-flow: column nowrap;
+}
+
+div.prompt {
+  position: absolute;
+  top:50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ash);
+  color: var(--main-bg );
+  border-radius: 5px;
+  min-width: 500px;
+  display: flex; flex-flow: column nowrap;
+}
+
+div.prompt input {
+  border-bottom: 1px solid var(--main-bg );
+  flex:1;
+}
+
+div.prompt button {
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px rgba(0,0,0,0.25);
+}
+
+div.prompt button:hover {
+  background: var(--smoke );
+}
+
+div.prompt button:active {
+  position: relative;
+  top: 2px;
+}
+
+div.taskbar {
+  background: var(--soot);
+  color: rgba(255, 255, 255, 0.85 );
+}
+
+div.taskbar .dropdown > .content {
+  background: var(--soot);
+}
+
+
+.dropdown > .content {
+  position: absolute;
+  display: none;
+  flex-flow: column nowrap;
+  width: 250px;
+  background: var(--shaded-bg);
+  border-right: 2px solid var(--ash);
+  border-bottom: 2px solid var(--ash);
+  border-top: 2px solid var(--hilite );
+  border-left: 2px solid var(--hilite );
+  z-index: 1;
+}
+
+.dropdown { cursor: pointer;}
+
+.dropdown.show > .content {
+  display: flex;
+}
+
+.dropdown > .content div {
+  display: flex;
   justify-content: space-between;
 }
 
-.editor {
-  position: relative;
-  background: #676767;
-  width: 100%; height: 100%;
+.dropdown > .content div:hover {
+  background: var(--hilite);
 }
 
-.canvas_area canvas {
-  border-right: 1px solid #111;
-  border-bottom: 1px solid #111;
-}
-
-#character_ui.editor {
-  display: flex;
-}
-
-#characterUI .canvas_area canvas {
-  min-width: 800px;
-}
-
-#character_ui .editor_area {
-  flex:1; display: flex; flex-flow: column nowrap;
-}
-
-#character_ui .canvas_area {
-  background: #333;
-  position: relative;
+.app, div.project .workspace, div.project {
   flex:1;
 }
 
-#character_ui .canvas_area > .cells {
-  position: absolute; right: 0; top:0; bottom: 0;
-  border-left: 1px solid #111;
-  overflow-y: auto;
-  min-width: 200px;
-  display: flex; flex-flow: column nowrap;
-  background: #676767;
-
-}
-
-.cells h1 {
-  text-align: center;
-  border-bottom: 1px solid #111;
-}
-
-#character_ui .interface_area {
-  border-left: 1px solid #111;
-  width: 450px;
-}
-
-#character_ui .rail {
-  height: 80px;
-  overflow: auto;
+.line, div.project .navigation, div.project, div.app, .folder .header {
   display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-  border-top: 1px solid #111;
 }
 
-#character_ui .interface_area > .panel {
-  border-bottom: 1px solid #111;
-}
-
-#character_ui .interface_area > .panel > h1 {
-  background: #454545;
-  font-weight: bold;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-
-#character_ui .interface_area > .panel > h1:hover {
-  background: #505050;
-}
-
-#cellwidth, #cellheight, #imagename {
-  min-width: 100px;
-  border-bottom: 1px solid #EEE;
-}
-
-#imagename {
-  flex:1;
-}
-
-.interface_area .content {
-  display: block;
-  padding: 0;
+.header {
+  display: flex;
 }

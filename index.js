@@ -1,35 +1,36 @@
 'use strict';
 const express = require('express');
-const app = express();
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
+const app = express();
 const PORT = process.env.port || 3000;
+
+app.engine('.hbs', exphbs({ extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/src', express.static(path.join(__dirname, '/client')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.js')));
+app.use('/handlebars', express.static(path.join(__dirname, 'node_modules', 'handlebars', 'dist', 'handlebars.js')));
 //app.use('/silk', express.static(path.join(__dirname, 'server', 'silk.lib.js')));
 
-//routing
-const getPage = name => {
-  return path.join(__dirname, 'views', name );
-}
+app.get('/', (req, res, next) => {
+  res.redirect('/Silk');
+})
 
-const routing = {};
+app.get('/hbs/*', (req, res, next) => {
+  let view = req.url.substring( req.url.lastIndexOf('/') + 1 );
+  res.sendFile( path.join(__dirname, '/views/'  + view  ));
+})
 
-routing.home = (req,res) => {
-  res.sendFile(getPage('index.html'))
-}
-
-routing.html = ( req, res ) => {
-  let node = req.url.substring( req.url.lastIndexOf('/') + 1);
-  res.sendFile( path.join(__dirname, 'views', node ));
-}
-
-app.get('/Silk', routing.home );
-app.get('/html/*', routing.html );
+app.get('/Silk', (req, res, next ) => {
+  res.render('silk', {
+    layout: 'main'
+  })
+});
 
 
 const onlisten = err => {
