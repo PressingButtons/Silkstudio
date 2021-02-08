@@ -1,0 +1,35 @@
+<div class="tile editor">
+
+  {{> task_menu }}
+
+  <div class="view">
+    <svg viewBox='0 0 800 480' xmlns="http://www.w3.org/2000/svg" id='svg_container'>
+      <defs>
+        <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(0,0,0,0.7)" stroke-width="0.5"/>
+        </pattern>
+          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <rect width="80" height="80" fill="url(#smallGrid)"/>
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
+        </pattern>
+      </defs>
+
+      <g id='graphic_tiles'></g>
+      <g id='collision_tiles'></g>
+
+      <rect width="100%" height="100%" fill="url(#grid)" id='gridSpace'/>
+      <path d="M 0 240 L 800 240" fill="none" stroke="rgba(255,0,0,0.8)" stroke-width="0.5"/>
+      <path d="M 400 0 L 400 480" fill="none" stroke="rgba(0,0,255,0.8)" stroke-width="0.5"/>
+      <rect id='camera' width='480' height='270' fill='none' stroke='rgba(255,240,0, 0.8)' stroke-width='0.5' x='160' y='105'/>
+      <rect id='camera_bounds' width='760' height='440' fill='none' stroke='rgba(0,254,0, 0.8)' stroke-width='0.5' x='20' y='20'/>
+      <path id='cursor' fill='none' stroke='none' stroke-width = '0.5'/>
+    </svg>
+  </div>
+
+  <div class="workspace">
+    {{> tile_workspace }}
+  </div>
+
+</div>
+
+<script src='/src/js/tile.app.js' type='module'></script>

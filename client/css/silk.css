@@ -31,6 +31,14 @@ input, button {
   margin: 6px;
 }
 
+svg {
+  border: 1px solid black;
+  width: 800px;
+  height: 480px;
+  cursor: none;
+  background: #333;
+}
+
 
 canvas {
   background: #888;

@@ -2,6 +2,52 @@
 //requires Jquery full library for ajax
 const IDE = (function( ) {
 
+  //namespaces
+  let compile = { }, listeners = { }, request = { }, silk = { }, ui = { };
+
+  compile.handlebars = function( hbs, data ) {
+    return new Promise(function(resolve, reject) {
+      try {
+        let template = Handlebars.compile( hbs );
+        resolve(template( data ));
+      } catch( error ) {
+        reject( error )
+      }
+    });
+  }
+
+  //listeners
+  listeners.onDocumentClick = function( event ) {
+
+  }
+
+  //requests
+  request.resource = function( url ) {
+    return new Promise(function(resolve, reject) {
+      $.get( url ).done( resolve ).fail( reject );
+    });
+  }
+
+  request.resources = function( ...urls ) {
+    return new Promise(function(resolve, reject) {
+      let promises = [];
+      urls.forEach(( url ) => {
+        promises.push( request.resource( url ))
+      });
+      Promise.all( promsies ).then( resolve ).catch( reject );
+    });
+  }
+
+  request.template = function( templateURL, tempateData, insertData ) {
+    request.resources( templateURL, templateData )
+    .then( hbs => {
+      let template = hbs[0], data = Object.assign(hbs[1], insertData );
+      return compile.handlebars( template, data );
+    }).then( resolve ).catch( reject );
+  }
+
+
+  /*
   const ajax = { };
 
   ajax.getResource = function( url )  {
@@ -163,5 +209,6 @@ const IDE = (function( ) {
     onSaveProject: listeners.onSaveProject,
     onTaskBarOption: listeners.onTaskBarOption,
   }
+  */
 
 })( );

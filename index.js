@@ -32,6 +32,12 @@ app.get('/Silk', (req, res, next ) => {
   })
 });
 
+app.get('/Silk/tiles', (req,res,next) => {
+  res.render('tile', {
+    layout: 'main',
+  })
+})
+
 
 const onlisten = err => {
   if( err ) throw err;
