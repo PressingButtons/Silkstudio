@@ -34,6 +34,10 @@ app.get('/home', (req, res) => {
   res.render('home', {source: null});
 })
 
+app.get('/tile', (req, res) => {
+  res.render('tile', {source: '/public/js/tile/main.js'});
+});
+
 app.get('/*', (req, res) => {
   res.status(404).render('404', {source: null});
 });
