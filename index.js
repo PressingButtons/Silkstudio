@@ -1,40 +1,46 @@
 'use strict';
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const path = require('path');
-const PORT = process.env.port || 3000;
+import express from 'express';
+import {create} from 'express-handlebars';
+import * as path from 'path';
+import bodyParser from 'body-parser';
+import { fileURLToPath } from 'url';
+
+const port = process.env.PORT || 3000;
+
+const app = express( );
+const hbs = create({
+  extname: '.hbs'
+});
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views', './views');
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/src', express.static(path.join(__dirname, '/client')));
-app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.js')));
-//app.use('/silk', express.static(path.join(__dirname, 'server', 'silk.lib.js')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 
 //routing
-const getPage = name => {
-  return path.join(__dirname, 'views', name );
-}
+app.get('/', (req, res) => {
+  res.redirect('/home');
+})
 
-const routing = {};
+app.get('/home', (req, res) => {
+  res.render('home', {source: null});
+})
 
-routing.home = (req,res) => {
-  res.sendFile(getPage('index.html'))
-}
-
-routing.html = ( req, res ) => {
-  let node = req.url.substring( req.url.lastIndexOf('/') + 1);
-  res.sendFile( path.join(__dirname, 'views', node ));
-}
-
-app.get('/Silk', routing.home );
-app.get('/html/*', routing.html );
-
+app.get('/*', (req, res) => {
+  res.status(404).render('404', {source: null});
+});
 
 const onlisten = err => {
   if( err ) throw err;
-  console.log('Server initialized, listening on port', PORT);
+  console.log('Server initialized, listening on port', port);
 }
 
-app.listen( PORT, onlisten );
+app.listen(port, onlisten );

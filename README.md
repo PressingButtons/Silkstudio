@@ -20,3 +20,14 @@ Some high level aspects that will be broken into as the project develops
 
 The first push of this project will feature the original template, the character editor.
 Drastic changes will be made in post.
+
+
+
+*** A long time coming *** 
+
+08/26/2022 - Second Journal Entry - Burn it all down
+
+It's been a while since I tried to perform any updates to this studio project. 
+After more solo development, I'd like to redo much I've what I've attempted here. 
+Silk Studio will have a more moduluar approach and focus on two things. Tilemaps and Sprite Objects.
+As such a complete overhaul is required.

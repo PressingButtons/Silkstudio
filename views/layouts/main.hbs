@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name='viewport' content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link href = '/client/css/reset.css' rel="stylesheet">
-    <link href = '/client/css/Silk.css' rel="stylesheet">
-    <title>Silk Javascript IDE</title>
-    <script type="text/javascript" src='/jquery'></script>
-    <script type="text/javascript" src='/client/js/silk.index.js'></script>
-  </head>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/public/css/silk.css">
+    <title>SilkJS</title>
+</head>
+<body>
+
     <header>
-      <h1 class='logo menu'>Silk</h1>
-      <div class="dropdown">
-        <p>New Project</p>
-        <p>Load Project</p>
-        <p>Save Project</p>
-      </div>
+      <a href="/tile">
+        <p>Tile</p>
+      </a>
+      <a href="/object">
+        <p>Sprite</p>
+      </a>
     </header>
 
-    <div class="app">
-      {{ > projectPanel }}
-      {{{ body }}}
-    </div>
+    <main>
+        {{{body}}}
+    </main>
 
-    {{ > overPanel }}
+    <footer>
+        <script type="module" src="{{source}}"></script>
+    </footer>
 
-  </body>
+    
+</body>
 </html>
