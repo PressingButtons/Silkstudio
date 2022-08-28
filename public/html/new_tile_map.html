@@ -1,0 +1,38 @@
+<form action="flex col">
+    <h1>New Tilemap</h1>
+    
+    <h2>Detail</h2>
+    
+    <div class="flex spaced">
+        <p>Tile size(pixels)</p>
+        <div class="spaced flex">
+            <input type="text" pattern="[0-9]{1,3}" required name="tilesize" value="16">
+        </div>
+    </div>
+    
+    <div class="flex spaced">
+        <p>Rows</p>
+        <input type="text" pattern="[0-9]{1,3}" required name="rows" placeholder="1" value = 1>
+    </div>
+    
+    
+    <div class="flex spaced">
+        <p>Columns</p>
+        <input type="text" pattern="[0-9]{1,3}" required name="cols" placeholder="1" value = 1>
+    </div>
+    
+    <div class="flex spaced">
+        <p>Tileset</p>
+        <input type="file" name="tileset" required>
+    </div>
+
+    <h2>Dimensions</h2>
+    <div class="flex">
+        <p class="dimensions">16 x 16</p>
+        <p>pixels</p>
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+

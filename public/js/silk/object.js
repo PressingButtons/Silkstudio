@@ -1,10 +1,11 @@
-export class SilkObject {
+export class SilkObject extends EventTarget {
 
     #body;
     #listenerMethods = new Map( );
 
     constructor(element) {
-        this.#body = element;
+        super( );
+        this.#body = element || this;
     }
 
     get body( ) {
