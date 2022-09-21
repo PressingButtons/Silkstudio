@@ -1,0 +1,51 @@
+.timeline {
+    min-width: 0;
+    width: 100%;
+    background-color: #666;
+}
+
+.timeline .controls {
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+
+.timeline .controls > div:not(:first-child) {
+    margin-left: 20px;
+}
+
+.timeline .rail {
+    display: flex;
+    overflow-x: auto;
+}
+
+.timeline .rail .segment {
+    min-width: 100px;
+    background-color: grey;
+    display: flex;
+    flex-flow: column;
+    cursor: pointer;
+}
+
+.timeline .rail .segment:not(:first-child) {
+    border-left: 1px solid black;
+}
+
+.timeline .rail .segment p {
+    padding: 20%;
+    margin: 0;
+    text-align: center;
+}
+
+.timeline .frame-number {
+    border-bottom: 1px solid black;
+}
+
+.timeline .rail .segment:hover p:first-child {
+    background-color: #555;
+}
+
+
+.timeline .rail .segment.template {
+    display: none;
+}

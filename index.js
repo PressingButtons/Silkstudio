@@ -38,6 +38,10 @@ app.get('/tile', (req, res) => {
   res.render('tile', {source: '/public/js/tile/main.js'});
 });
 
+app.get('/sprite', (req, res) => {
+  res.render('sprite', {source: '/public/js/sprite/main.js'});
+});
+
 app.get('/*', (req, res) => {
   res.status(404).render('404', {source: null});
 });

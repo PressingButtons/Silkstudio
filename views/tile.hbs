@@ -1,17 +1,17 @@
-<div id="overpane"></div>
-
 <div class="flex options" style="border-bottom: 2px solid rgba(0, 0, 0, 0.25)">
     <p onclick = "document.dispatchEvent(new Event('new_tile'));">New</p>
     <p>Import</p>
     <p>Export</p>
 </div>
 
-<div class="flex grow">
+<div class="flex full">
 
     <div id="workspace">
         {{> tile_editor}}
     </div>
 
-    <div id="interface"></div>
+    <div id="interface">
+        {{> tile_interface}}
+    </div>
 
 </div>
