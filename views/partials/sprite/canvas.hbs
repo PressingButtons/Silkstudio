@@ -1,9 +1,22 @@
-<div class="sprite-editor-container full">
+<div class="sprite-editor-container full flex">
 
-    <canvas id="work-canvas" style="background-color: #999"></canvas>
-    <svg>
-        <g id="meta-content"></g>
-        <rect width="100%" height="100%" fill="none" stroke="none"/>
-    </svg>
+    <div class="flex full centered">
+        <div>
+            <canvas id="work-canvas" style="background-color: #999"></canvas>
+            <svg id="meta-svg">
+                <g id="meta-content"></g>
+                <rect width="100%" height="100%" fill="none" stroke="none"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="tools flex col">
+
+        <button>Body</button>
+        <button>Hit</button>
+        <button>Hurt</button>
+        <button>Misc</button>
+
+    </div>
 
 </div>
